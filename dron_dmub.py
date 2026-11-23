@@ -25,8 +25,8 @@ from matplotlib.animation import FuncAnimation, PillowWriter
 #    PEGUEN AQUÍ el bloque "Datos para Python (Colab)" de la consola, reemplazando
 #    las dos líneas siguientes (vienen con los datos DEMO). No cambien nada más.
 # ------------------------------------------------------------------
-CODIGO = "DRN-DMUB"
-PARAMS = dict(L=5, k=0.12, u=2, b=0.3, a=0.5, e=0.05, c=2.0, d=5.0, eps=8, Eb=55)
+CODIGO = "DEMO"
+PARAMS = dict(L=6, k=0.15, u=1, b=0.3, a=0.15, e=0.05, c=2.5, d=7.5, eps=12, Eb=90)
 L, k, u, b, a, e, c, d, eps, Eb = (PARAMS[s] for s in ("L", "k", "u", "b", "a", "e", "c", "d", "eps", "Eb"))
 R = L / 2
 
@@ -36,9 +36,8 @@ R = L / 2
 # ------------------------------------------------------------------
 def F(x, y):
     """Regresa np.array([P, Q]). Debe funcionar con escalares y con arreglos de numpy."""
-    # TODO (Dinámica): escribir P y Q
-    # STUB TEMPORAL puesto por Logística para poder probar trabajo(). Dinámica lo reemplaza.
-    return np.array([-u + b*x + a*y**2, d + e*y**2 - c*x])
+    # TODO: escribir P y Q
+    raise NotImplementedError("F(x, y)")
 
 def div(x, y):
     # TODO: dP/dx + dQ/dy  (derívenlo a mano y escriban el resultado)
@@ -54,10 +53,8 @@ def rot(x, y):
 # ------------------------------------------------------------------
 RUTAS = {
     1: (lambda t: np.array([t, 0.0]), lambda t: np.array([1.0, 0.0]), 0.0, L),   # recta (completa)
-    # Ruta 2 (Logística): parábola y = k x (L - x), parametrizada con x = t
-    2: (lambda t: np.array([t, k * t * (L - t)]),       # r(t) = <t, k t (L - t)>
-        lambda t: np.array([1.0, k * (L - 2 * t)]),     # r'(t) = <1, k (L - 2t)>
-        0.0, L),
+    # TODO: Ruta 2, parábola y = k x (L - x), con x = t
+    # 2: (lambda t: ..., lambda t: ..., 0.0, L),
     # TODO: Ruta 3, semicircunferencia superior de centro (R, 0). Ojo: theta va de pi a 0
     # 3: (lambda t: ..., lambda t: ..., math.pi, 0.0),
 }
@@ -65,10 +62,8 @@ RUTAS = {
 def trabajo(i):
     """W_i = ∫ F(r(t)) · r'(t) dt  con scipy.integrate.quad."""
     r, dr, t0, t1 = RUTAS[i]
-    # Logística: producto punto F(r(t)) · r'(t) e integración numérica
-    integrando = lambda t: F(*r(t)) @ dr(t)
-    W, error = quad(integrando, t0, t1)   # quad regresa (valor, error estimado)
-    return W
+    # TODO: integrando = F(*r(t)) @ dr(t)
+    raise NotImplementedError("trabajo")
 
 # ------------------------------------------------------------------
 # 3. Analista de Zona · integrales dobles del rotacional (5.3, 5.4)
