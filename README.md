@@ -20,10 +20,10 @@ F(x, y) = ⟨ −2 + 0.3x + 0.5y² ,  5 + 0.05y² − 2x ⟩ · L = 5 km · k = 
 
 | Rol | Funciones | Estado |
 |---|---|---|
-| Logística | Ruta 2, `trabajo()` | ✅ Listo y verificado (W₁ = −6.25, W₂ = −0.50) |
+| Logística | Rutas 2 y 3, `trabajo()` | ✅ Listo y verificado (W₁ = −6.25, W₂ = −0.50, W₃ = 23.80) |
 | Dinámica | `F`, `div`, `rot` | ⏳ `F` tiene un stub temporal; falta `div` y `rot` |
 | Análisis de Zona | `doble_D2`, `doble_D3` | ⏳ Pendiente |
-| Calidad | Ruta 3, `verificar_green` | ⏳ Pendiente |
+| Calidad | W₃ a mano, `verificar_green` | ⏳ Pendiente (la Ruta 3 del código ya la puso Logística) |
 | Equipo | `longitud`, `energia`, gráfica de barras de energía | ⏳ Pendiente |
 
 ## Cómo correr

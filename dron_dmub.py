@@ -58,8 +58,10 @@ RUTAS = {
     2: (lambda t: np.array([t, k * t * (L - t)]),       # r(t) = <t, k t (L - t)>
         lambda t: np.array([1.0, k * (L - 2 * t)]),     # r'(t) = <1, k (L - 2t)>
         0.0, L),
-    # TODO: Ruta 3, semicircunferencia superior de centro (R, 0). Ojo: theta va de pi a 0
-    # 3: (lambda t: ..., lambda t: ..., math.pi, 0.0),
+    # Ruta 3 (Logística): semicircunferencia superior de centro (R, 0), parametrizada con el ángulo t = theta
+    3: (lambda t: np.array([R + R * np.cos(t), R * np.sin(t)]),    # r(t)  = <R + R cos t, R sen t>
+        lambda t: np.array([-R * np.sin(t), R * np.cos(t)]),       # r'(t) = <-R sen t, R cos t>
+        math.pi, 0.0),                                             # t va de pi (punto A) a 0 (punto B)
 }
 
 def trabajo(i):
